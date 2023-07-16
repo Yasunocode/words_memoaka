@@ -1,7 +1,7 @@
 javascript:(function() {
   const elementsMemo = document.querySelectorAll('.wordsResultMemo');
   const elementsRecall = document.querySelectorAll('.wordsResultRecall');
-  const count = 22; /* 変更可能な要素数の上限 */
+  const count = 22; /* 単語の上限値ですレベルに応じて要変更 */
 
   let result = '';
 
