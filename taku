@@ -1,0 +1,29 @@
+javascript:(function() {
+  const elementsMemo = document.querySelectorAll('.wordsResultMemo');
+  const elementsRecall = document.querySelectorAll('.wordsResultRecall');
+  const count = 22; /* 変更可能な要素数の上限 */
+
+  let result = '';
+
+  elementsMemo.forEach((element, index) => {
+    if (index >= 0 && index <= count - 1) {
+      const textMemo = element.textContent.trim();
+      const textRecall = elementsRecall[index].textContent.trim();
+      const elementNumber = index + 1;
+      result += `${elementNumber}\t${textMemo}\t${textRecall}\n`;
+    }
+  });
+
+  const confirmed = confirm(result);
+  if (confirmed) {
+    const dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = result;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+    console.log('テキストがクリップボードにコピーされました。');
+  } else {
+    console.log('ユーザーがキャンセルをクリックしました。');
+  }
+})();
